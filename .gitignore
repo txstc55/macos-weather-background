@@ -2,9 +2,14 @@ sunny/*
 mist/*
 cloudy/*
 clear/*
+default/*
 !sunny/sunny_default.jpg
 !mist/mist_default.jpg
 !cloudy/cloudy_default.jpg
 !clear/clear_default.jpg
+!default/default.jpg
+
+extra_weather_list.txt
+
 .Ds_Store
 */Ds_Store
