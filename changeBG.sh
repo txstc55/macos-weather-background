@@ -4,8 +4,8 @@ callSCPT(){
     rm $SCRIPT_DIR/changeBG.scpt
     echo 'tell application "System Events"' >> $SCRIPT_DIR/changeBG.scpt
     echo '  tell every desktop' >> $SCRIPT_DIR/changeBG.scpt
-    echo "        set picture to \"$1\"" >> $SCRIPT_DIR/changeBG.scpt
-    echo '    end tell' >> $SCRIPT_DIR/changeBG.scpt
+    echo "    set picture to \"$1\"" >> $SCRIPT_DIR/changeBG.scpt
+    echo '  end tell' >> $SCRIPT_DIR/changeBG.scpt
     echo 'end tell' >> $SCRIPT_DIR/changeBG.scpt ## run the script
 }
 
