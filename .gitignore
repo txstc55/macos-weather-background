@@ -10,6 +10,7 @@ default/*
 !default/default.jpg
 
 extra_weather_list.txt
+changeBG.scpt
 
 .Ds_Store
 */Ds_Store
