@@ -7,7 +7,6 @@ callSCPT(){
     echo "        set picture to \"$1\"" >> $SCRIPT_DIR/changeBG.scpt
     echo '    end tell' >> $SCRIPT_DIR/changeBG.scpt
     echo 'end tell' >> $SCRIPT_DIR/changeBG.scpt ## run the script
-    osascript $SCRIPT_DIR/changeBG.scpt
 }
 
 
@@ -40,7 +39,7 @@ changeBGByWeather(){
                     echo $weather >> $SCRIPT_DIR/extra_weather_list.txt;
                 fi 
         else
-            echo "Pictures found: ${weather_pictures[@]}";
+            # echo "Pictures found: ${weather_pictures[@]}";
             size=${#weather_pictures[@]}
             index=$(($RANDOM % $size))
             random_picture=$(realpath ${weather_pictures[$index]})
