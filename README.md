@@ -35,4 +35,4 @@ You can always check `extra_weather_list.txt` to see if there's any weather you 
 ## Change Interval
 The reason there are two plists is because osascript doesn't always work when it's called from plist. Therefore, you can decrease `StartInterval` in `com.txstc55.change-bg.plist` to increase the chance for it to actually work. The default is 5 minutes.
 
-The default for checking wheather is 30 minutes. You can also change that in `com.txstc55.pick-bg.plist` under key `StartInterval`
+The default for checking weather is 30 minutes. You can also change that in `com.txstc55.pick-bg.plist` under key `StartInterval`
