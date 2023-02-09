@@ -1,13 +1,13 @@
 #!/bin/bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) ## get the script's directory
 callSCPT(){
-    rm changeBG.scpt
-    echo 'tell application "System Events"' >> changeBG.scpt
-    echo '  tell every desktop' >> changeBG.scpt
-    echo "        set picture to \"$1\"" >> changeBG.scpt
-    echo '    end tell' >> changeBG.scpt
-    echo 'end tell' >> changeBG.scpt ## run the script
-    osascript changeBG.scpt
+    rm $SCRIPT_DIR/changeBG.scpt
+    echo 'tell application "System Events"' >> $SCRIPT_DIR/changeBG.scpt
+    echo '  tell every desktop' >> $SCRIPT_DIR/changeBG.scpt
+    echo "        set picture to \"$1\"" >> $SCRIPT_DIR/changeBG.scpt
+    echo '    end tell' >> $SCRIPT_DIR/changeBG.scpt
+    echo 'end tell' >> $SCRIPT_DIR/changeBG.scpt ## run the script
+    osascript $SCRIPT_DIR/changeBG.scpt
 }
 
 
@@ -37,7 +37,7 @@ changeBGByWeather(){
                 then
                     echo "Extra weather already in list";
                 else
-                    echo $weather >> extra_weather_list.txt;
+                    echo $weather >> $SCRIPT_DIR/extra_weather_list.txt;
                 fi 
         else
             echo "Pictures found: ${weather_pictures[@]}";
@@ -54,5 +54,3 @@ changeBGByWeather(){
 }
 
 changeBGByWeather
-echo $RANDOM >> ~/test
-
