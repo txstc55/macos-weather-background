@@ -1,0 +1,22 @@
+<!-- put this file in ~/Library/LaunchAgents -->
+<!-- note that you will need to put this project
+under public directory like ~/
+locations like Desktop, Document and Download
+are treated as private location and plist cannot access then -->
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple Computer//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+    <key>Label</key>
+    <string>com.txstc55.change-bg-on-weather</string>
+    <key>RunAtLoad</key>
+    <true/>
+    <key>ProgramArguments</key>
+    <array>
+        <string>/bin/bash</string>
+        <string>/path/to/changeBG.sh</string>
+    </array>
+    <key>StartInterval</key>
+    <integer>1200</integer>
+</dict>
+</plist>

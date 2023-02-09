@@ -8,17 +8,17 @@ are treated as private location and plist cannot access then -->
 <plist version="1.0">
 <dict>
     <key>Label</key>
-    <string>com.txstc55.change-bg-on-weather</string>
-    <key>KeepAlive</key>
-    <true/>
+    <string>com.txstc55.change-bg</string>
     <key>RunAtLoad</key>
     <true/>
+    <key>Program</key>
+    <string>/usr/bin/osascript</string>
     <key>ProgramArguments</key>
     <array>
-        <string>/bin/bash</string>
-        <string>/directory-to-project/changeBG.sh</string>
+        <string>osascript</string>
+        <string>/Users/xuan/macos-weather-background/changeBG.scpt</string>
     </array>
     <key>StartInterval</key>
-    <integer>1800</integer>
+    <integer>300</integer>
 </dict>
 </plist>
