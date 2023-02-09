@@ -1,6 +1,5 @@
 #!/bin/bash
 SCRIPT_DIR=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd ) ## get the script's directory
-echo $SCRIPT_DIR
 callSCPT(){
     rm changeBG.scpt
     echo 'tell application "System Events"' >> changeBG.scpt
@@ -16,13 +15,11 @@ changeBGByWeather(){
     weather=$(curl -s 'wttr.in/?format="%C"') ## get the weather condition
     weather=$(echo $weather|tr -d '"'|tr '[:upper:]' '[:lower:]') ## remove the trailing ""
     if [[ $weather ]]
-        echo $weather
     then
         weather_pictures=()
         # echo "${weather_pictures[@]}"
-        for dir in $SCRIPT_DIR; ## for each file/dir in this folder
+        for dir in "$SCRIPT_DIR"/*; ## for each file/dir in this folder
         do
-            echo $dir
         	if [[ -d $dir ]] ## check if it is a folder
         		then
         			if [[ "$dir" == *"$weather"* ]] ## if the directory contains the 
@@ -31,7 +28,6 @@ changeBGByWeather(){
                         variable=$(find $dir -name '*' -exec file {} \; | grep -o -E '^.+: \w+ image' | grep -o -E '^.+:' | rev | cut -c2- |rev);
                         ## add the variable in picture list
                         weather_pictures+=($variable);
-        				# echo "$dir"; ## get all the images in the directory
         			fi
         		fi
         done
@@ -49,12 +45,10 @@ changeBGByWeather(){
             index=$(($RANDOM % $size))
             random_picture=$(realpath ${weather_pictures[$index]})
             callSCPT $random_picture
-            echo $random_picture >> ~/test
         fi
     else 
         $random_picture=$(realpath "./default/default.jpg")
         callSCPT $random_picture
-        echo $random_picture >> ~/test
         echo "Network not connected";
     fi
 }
