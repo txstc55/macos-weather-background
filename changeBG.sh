@@ -22,10 +22,10 @@ changeBGByWeather(){
         do
         	if [[ -d $dir ]] ## check if it is a folder
         		then
-        			if [[ "$dir" == *"$weather"* ]] ## if the directory contains the 
+        			if [[ "$dir" == *"${weather// /_}"* ]] ## if the directory contains the 
         			then
                         ## first, we find all the files, then we grep the images, then we cut the images to a substring, then remove the extra characters
-                        variable=$(find $dir -name '*' -exec file {} \; | grep -o -E '^.+: \w+ image' | grep -o -E '^.+:' | rev | cut -c2- |rev);
+                        variable=$(find "$dir" -name '*' -exec file {} \; | grep -o -E '^.+: \w+ image' | grep -o -E '^.+:' | rev | cut -c2- |rev);
                         ## add the variable in picture list
                         weather_pictures+=($variable);
         			fi
@@ -33,7 +33,7 @@ changeBGByWeather(){
         done
         if [ ${#weather_pictures[@]} -eq 0 ]; 
             then
-                random_picture=$(realpath $SCRIPT_DIR/./default/default.jpg)
+                random_picture=$(realpath "$SCRIPT_DIR/./default/default.jpg")
                 callSCPT $random_picture
                 if grep -Fxq "$weather" $SCRIPT_DIR/extra_weather_list.txt
                 then
@@ -54,7 +54,7 @@ changeBGByWeather(){
             callSCPT $random_picture
         fi
     else 
-        random_picture=$(realpath $SCRIPT_DIR/./default/default.jpg)
+        random_picture=$(realpath "$SCRIPT_DIR/./default/default.jpg")
         callSCPT $random_picture
         echo "Network not connected";
     fi
