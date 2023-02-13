@@ -3,6 +3,7 @@ mist/*
 cloudy/*
 clear/*
 default/*
+partly_cloudy/*
 !sunny/sunny_default.jpg
 !mist/mist_default.jpg
 !cloudy/cloudy_default.jpg
