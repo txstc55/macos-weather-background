@@ -33,7 +33,7 @@ changeBGByWeather(){
         done
         if [ ${#weather_pictures[@]} -eq 0 ]; 
             then
-                $random_picture=$(realpath "./default/default.jpg")
+                random_picture=$(realpath $SCRIPT_DIR/./default/default.jpg)
                 callSCPT $random_picture
                 if grep -Fxq "$weather" $SCRIPT_DIR/extra_weather_list.txt
                 then
@@ -54,7 +54,7 @@ changeBGByWeather(){
             callSCPT $random_picture
         fi
     else 
-        $random_picture=$(realpath "./default/default.jpg")
+        random_picture=$(realpath $SCRIPT_DIR/./default/default.jpg)
         callSCPT $random_picture
         echo "Network not connected";
     fi
