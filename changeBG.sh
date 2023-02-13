@@ -15,6 +15,7 @@ changeBGByWeather(){
     weather=$(echo $weather|tr -d '"'|tr '[:upper:]' '[:lower:]') ## remove the trailing ""
     if [[ $weather ]]
     then
+        echo $weather
         weather_pictures=()
         # echo "${weather_pictures[@]}"
         for dir in "$SCRIPT_DIR"/*; ## for each file/dir in this folder
@@ -32,7 +33,9 @@ changeBGByWeather(){
         done
         if [ ${#weather_pictures[@]} -eq 0 ]; 
             then
-                if grep -Fxq $weather $SCRIPT_DIR/extra_weather_list.txt
+                $random_picture=$(realpath "./default/default.jpg")
+                callSCPT $random_picture
+                if grep -Fxq "$weather" $SCRIPT_DIR/extra_weather_list.txt
                 then
                     echo "Extra weather already in list";
                 else
@@ -43,6 +46,11 @@ changeBGByWeather(){
             size=${#weather_pictures[@]}
             index=$(($RANDOM % $size))
             random_picture=$(realpath ${weather_pictures[$index]})
+            # image_width=$(identify -format '%w' $random_picture)
+            # image_height=$(identify -format '%h' $random_picture)
+            # echo $((image_width/100))
+            # echo $((image_height/100))
+            # convert $random_picture <(curl wttr.in/_tqp0.png?m) -geometry 1000*1000+$((image_width/2))+$((image_height/2)) -composite $SCRIPT_DIR/weatherComposed.jpg
             callSCPT $random_picture
         fi
     else 
