@@ -32,7 +32,7 @@ changeBGByWeather(){
         done
         if [ ${#weather_pictures[@]} -eq 0 ]; 
             then
-                if grep -Fxq $weather extra_weather_list.txt
+                if grep -Fxq $weather $SCRIPT_DIR/extra_weather_list.txt
                 then
                     echo "Extra weather already in list";
                 else
